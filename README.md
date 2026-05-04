@@ -100,16 +100,9 @@ Found a bug? Please use our [Bug Report Template](.github/ISSUE_TEMPLATE/bug_rep
 ## 📝 Personal Notes
 
 > **Note (personal fork):** I'm using this primarily to study information gathering and network scanning techniques in my home lab. The tools I use most frequently are in the *Information Gathering* and *Wireless Attack* categories. Tested on Kali Linux 2024.1.
+>
+> **Home lab setup:** Running on a dedicated Raspberry Pi 4 (8GB) with Kali Linux. For wireless tools, I use an Alfa AWUS036ACH adapter — worth noting that monitor mode needs to be enabled manually before launching any wireless category tools (`sudo airmon-ng start wlan0`).
 
 ## 📄 License
 
 This project is licensed under the GPL-3.0 License — see the [LICENSE](LICENSE) file for details.
-
-## 💖 Support
-
-If you find this project useful, consider supporting the original author. See [FUNDING.yml](.github/FUNDING.yml) for details.
-
-## 🙏 Credits
-
-- Original project by [Z4nzu](https://github.com/Z4nzu)
-- All tool authors and contributors
