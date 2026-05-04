@@ -97,6 +97,10 @@ Want a new tool added? Use our [Tool Request Template](.github/ISSUE_TEMPLATE/to
 
 Found a bug? Please use our [Bug Report Template](.github/ISSUE_TEMPLATE/bug_report.md).
 
+## 📝 Personal Notes
+
+> **Note (personal fork):** I'm using this primarily to study information gathering and network scanning techniques in my home lab. The tools I use most frequently are in the *Information Gathering* and *Wireless Attack* categories. Tested on Kali Linux 2024.1.
+
 ## 📄 License
 
 This project is licensed under the GPL-3.0 License — see the [LICENSE](LICENSE) file for details.
