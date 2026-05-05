@@ -59,6 +59,7 @@ The authors are not responsible for any misuse or damage
 caused by this program.
 """)
     print("=" * 60)
+    # Auto-accept disabled — always prompt; don't want to accidentally skip this
     try:
         answer = input("Do you accept the terms? [y/N]: ").strip().lower()
         if answer != "y":
@@ -71,7 +72,8 @@ caused by this program.
 
 def check_dependencies():
     """Check that required system dependencies are available."""
-    dependencies = ["git", "python3", "pip3"]
+    # Added 'curl' to deps since several tools rely on it for downloading
+    dependencies = ["git", "python3", "pip3", "curl"]
     missing = []
     for dep in dependencies:
         result = subprocess.run(
@@ -97,24 +99,4 @@ def main():
         show_disclaimer()
         check_dependencies()
 
-        if not check_root():
-            print("[!] Warning: Some tools may require root privileges.")
-            print("    Consider running with sudo for full functionality.\n")
-            sleep(1)
-
-        # Import and launch the main menu after all checks pass
-        from core.menu import MainMenu  # noqa: E402
-        menu = MainMenu()
-        menu.show()
-
-    except KeyboardInterrupt:
-        print("\n\n[!] Interrupted by user. Exiting...")
-        sys.exit(0)
-    except ImportError as e:
-        print(f"[!] Failed to import core module: {e}")
-        print("[!] Please ensure all dependencies are installed: pip3 install -r requirements.txt")
-        sys.exit(1)
-
-
-if __name__ == "__main__":
-    main()
+       
