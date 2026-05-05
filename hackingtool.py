@@ -73,7 +73,8 @@ caused by this program.
 def check_dependencies():
     """Check that required system dependencies are available."""
     # Added 'curl' to deps since several tools rely on it for downloading
-    dependencies = ["git", "python3", "pip3", "curl"]
+    # Also added 'wget' — some install scripts use it instead of curl
+    dependencies = ["git", "python3", "pip3", "curl", "wget"]
     missing = []
     for dep in dependencies:
         result = subprocess.run(
@@ -92,11 +93,4 @@ def check_dependencies():
 def main():
     """Main entry point — display banner, check environment, launch menu."""
     try:
-        # Clear terminal for a clean start
-        os.system("clear" if os.name == "posix" else "cls")
-
-        banner()
-        show_disclaimer()
-        check_dependencies()
-
-       
+        # Clear termi
