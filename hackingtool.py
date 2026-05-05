@@ -76,7 +76,8 @@ def check_dependencies():
     # Also added 'wget' — some install scripts use it instead of curl
     # Removed 'pip3' from this list — on some distros it's 'pip' or managed
     # via python3 -m pip, so the 'which pip3' check was giving false negatives
-    dependencies = ["git", "python3", "curl", "wget"]
+    # Added 'tar' — needed by several tool install scripts that fetch tarballs
+    dependencies = ["git", "python3", "curl", "wget", "tar"]
     missing = []
     for dep in dependencies:
         result = subprocess.run(
@@ -87,10 +88,4 @@ def check_dependencies():
         if result.returncode != 0:
             missing.append(dep)
     if missing:
-        print(f"[!] Missing dependencies: {', '.join(missing)}")
-        print("[!] Please install them before proceeding.")
-        sys.exit(1)
-
-
-def main():
-    """Main entry point — dis
+        print(f"[!] Missing dependencies:
