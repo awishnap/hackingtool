@@ -74,7 +74,9 @@ def check_dependencies():
     """Check that required system dependencies are available."""
     # Added 'curl' to deps since several tools rely on it for downloading
     # Also added 'wget' — some install scripts use it instead of curl
-    dependencies = ["git", "python3", "pip3", "curl", "wget"]
+    # Removed 'pip3' from this list — on some distros it's 'pip' or managed
+    # via python3 -m pip, so the 'which pip3' check was giving false negatives
+    dependencies = ["git", "python3", "curl", "wget"]
     missing = []
     for dep in dependencies:
         result = subprocess.run(
@@ -91,6 +93,4 @@ def check_dependencies():
 
 
 def main():
-    """Main entry point — display banner, check environment, launch menu."""
-    try:
-        # Clear termi
+    """Main entry point — dis
