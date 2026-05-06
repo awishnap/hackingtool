@@ -101,6 +101,6 @@ Found a bug? Please use our [Bug Report Template](.github/ISSUE_TEMPLATE/bug_rep
 
 > **Note (personal fork):** I'm using this primarily to study information gathering and network scanning techniques in my home lab. The tools I use most frequently are in the *Information Gathering* and *Wireless Attack* categories. Tested on Kali Linux 2024.1.
 >
-> **Home lab setup:** Running on a dedicated Raspberry Pi 4 (8GB) with Kali Linux. For wireless testing I use an Alfa AWUS036ACH adapter. Note that on the Pi 4, some tools can be slow to load — running `sudo python3 hackingtool.py` with the `--no-check-update` flag (if available) helps speed up startup noticeably.
+> **Home lab setup:** Running on a dedicated Raspberry Pi 4 (8GB) with Kali Linux. For wireless testing I use an Alfa AWUS036ACH adapter. Note that some tools in the DDOS and RAT categories are disabled in my setup — I commented them out in `hackingtool.py` since I have no use for them and prefer to keep the menu uncluttered.
 >
-> **Tip for Raspberry Pi users:** If you hit permission errors with wireless tools, make sure your user is in the `netdev` group: `sudo usermod -aG netdev $USER`.
+> **Tip for Raspberry Pi users:** If you run into performance issues launching multiple tools back-to-back, adding a short `time.sleep(0.5)` before subprocess calls in `hackingtool.py` helps avoid race conditions on slower SD cards.
