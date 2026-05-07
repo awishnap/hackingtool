@@ -77,7 +77,8 @@ def check_dependencies():
     # Removed 'pip3' from this list — on some distros it's 'pip' or managed
     # via python3 -m pip, so the 'which pip3' check was giving false negatives
     # Added 'tar' — needed by several tool install scripts that fetch tarballs
-    dependencies = ["git", "python3", "curl", "wget", "tar"]
+    # Added 'unzip' — noticed a few tools ship as .zip archives, was silently failing
+    dependencies = ["git", "python3", "curl", "wget", "tar", "unzip"]
     missing = []
     for dep in dependencies:
         result = subprocess.run(
@@ -86,6 +87,4 @@ def check_dependencies():
             stderr=subprocess.DEVNULL
         )
         if result.returncode != 0:
-            missing.append(dep)
-    if missing:
-        print(f"[!] Missing dependencies:
+   
