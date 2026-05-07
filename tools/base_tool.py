@@ -36,8 +36,10 @@ class BaseTool(ABC):
         self.description = description
         self.install_command = install_command
         self.repo_url = repo_url
+        # Changed default install dir to ~/tools instead of ~/hackingtool_tools
+        # to keep my home directory a bit tidier.
         self.install_dir = install_dir or os.path.join(
-            os.path.expanduser("~"), "hackingtool_tools", name.lower().replace(" ", "_")
+            os.path.expanduser("~"), "tools", name.lower().replace(" ", "_")
         )
 
     def is_installed(self) -> bool:
@@ -86,27 +88,4 @@ class BaseTool(ABC):
 
         Args:
             command: The shell command string to execute.
-            cwd: Working directory for the command.
-
-        Returns:
-            True if the command exited with code 0, False otherwise.
-        """
-        result = subprocess.run(
-            command,
-            shell=True,
-            cwd=cwd or self.install_dir if os.path.isdir(self.install_dir or "") else None,
-            capture_output=True,
-            text=True,
-        )
-        if result.returncode != 0:
-            print(f"[-] Command failed: {result.stderr.strip()}")
-        return result.returncode == 0
-
-    @abstractmethod
-    def run(self) -> None:
-        """Launch the tool interactively. Must be implemented by subclasses."""
-        raise NotImplementedError
-
-    def __str__(self) -> str:
-        status = "installed" if self.is_installed() else "not installed"
-        return f"{self.name} [{status}] — {self.description}"
+      
