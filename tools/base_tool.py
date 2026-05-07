@@ -73,7 +73,8 @@ class BaseTool(ABC):
         """Clone the tool's git repository into install_dir."""
         os.makedirs(os.path.dirname(self.install_dir), exist_ok=True)
         result = subprocess.run(
-            ["git", "clone", self.repo_url, self.install_dir],
+            # Use --depth=1 for a shallow clone to save disk space and speed things up.
+            ["git", "clone", "--depth=1", self.repo_url, self.install_dir],
             capture_output=True,
             text=True,
         )
@@ -84,8 +85,4 @@ class BaseTool(ABC):
         return False
 
     def _run_shell(self, command: str, cwd: Optional[str] = None) -> bool:
-        """Run an arbitrary shell command.
-
-        Args:
-            command: The shell command string to execute.
-      
+    
